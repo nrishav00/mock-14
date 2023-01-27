@@ -7,6 +7,12 @@ const puzzUserModel = require("./Models/User.model");
 env.config();
 const app = express();
 const port = process.env.PORT || 4000;
+const cors = require("cors");
+app.use(
+  cors({
+    origin: "*",
+  })
+);
 app.get("/", (req, res) => {
   const wordArray = fs.readFileSync(wordListPath, "utf8").split("\n");
   const randomWordIndex = Math.floor(Math.random() * wordArray.length);
